@@ -1,0 +1,19 @@
+- if tests.present?
+  - tests.each do |test|
+    tr class="#{row_test_status(test)}"
+      td.text-center = "##{test.id}"
+      td = truncate(strip_tags(test.about), length: 60)
+      td
+        = test_detail(test, "Done")
+        = test_detail(test, "Failed")
+        = test_detail(test, "New")
+      td
+        = link_to "Show", project_test_path(@project, test), class: "btn btn-info"
+        | &nbsp;
+        = link_to "Edit", edit_project_test_path(@project, test), class: "btn btn-warning"
+        | &nbsp;
+        = link_to "Delete", project_test_path(@project, test), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger"
+- else
+  tr
+    td.text-center colspan="4"
+      | There is no test list available at this moment

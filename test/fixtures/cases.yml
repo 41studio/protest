@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: cases
+#
+#  id              :integer          not null, primary key
+#  scenario        :text
+#  expected_result :text
+#  actual_result   :text
+#  test_id         :integer
+#  user_id         :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  case_type       :string
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  scenario: MyText
+  expected_result: MyText
+  actual_result: MyText
+  test_id: 1
+  user_id: 1
+
+two:
+  scenario: MyText
+  expected_result: MyText
+  actual_result: MyText
+  test_id: 1
+  user_id: 1

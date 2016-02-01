@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Email:
+  = @user_test.email
+p
+  strong Password:
+  = @user_test.password
+
+= link_to 'Edit', edit_user_test_path(@user_test)
+'|
+= link_to 'Back', user_tests_path

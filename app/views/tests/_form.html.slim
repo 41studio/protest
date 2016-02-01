@@ -1,0 +1,10 @@
+= simple_form_for @test, url: (@test.new_record? == true ? project_tests_path(params[:project_id]) : project_test_path(params[:project_id], @test)) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :project_id, as: :hidden, input_html: {value: @project.id}
+    = f.input :user_id, as: :hidden, input_html: {value: current_user.id}
+    = f.input :about
+
+  .form-actions
+    = f.button :submit

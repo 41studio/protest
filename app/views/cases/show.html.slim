@@ -1,0 +1,37 @@
+p#notice = notice
+
+p
+  strong Scenario:
+  = @case.scenario.html_safe
+p
+  strong Expected Result:
+  = @case.expected_result.html_safe
+p
+  strong Actual Result:
+  = @case.actual_result.html_safe
+p
+  strong Case Type:
+  = @case.case_type
+p
+  strong Status:
+  = @case.latest_status
+
+= link_to 'Edit', edit_project_test_case_path(@case.test.project, @case.test, @case), class: "btn btn-default"
+| &nbsp;
+= link_to 'Back', project_test_path(@case.test.project, @case.test), class: "btn btn-default"
+
+hr
+
+.row
+  .col-md-12.mar-bottom-15
+    h3 List Activities
+    = link_to 'Add New Activity', new_project_test_case_activity_path(@case.test.project, @case.test, @case), class: "btn btn-success"
+  .col-md-12
+    table.table.table-bordered.table-hover
+      tr
+        td.text-center ID
+        td Description
+        td Status
+        td Date
+        td Actions
+      = render partial: "activities/list", locals: {activities: @activities}

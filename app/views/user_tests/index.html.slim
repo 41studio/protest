@@ -1,0 +1,31 @@
+h3 Listing User Test
+
+table.table.table-bordered.table-hover
+  thead
+    tr
+      th No
+      th Email
+      th Password
+      th
+
+  tbody
+    - if @user_tests.present?
+      - @user_tests.each_with_index do |user_test, index|
+        tr
+          td = index + 1
+          td = user_test.email
+          td = user_test.password
+          td
+            = link_to 'Show', user_test
+            | &nbsp;
+            = link_to 'Edit', edit_user_test_path(user_test)
+            | &nbsp;
+            = link_to 'Destroy', user_test, data: {:confirm => 'Are you sure?'}, :method => :delete
+    - else
+      tr
+        td.text-center colspan="4"
+          | There is no user test list available at this moment
+
+br
+
+= link_to 'New User Test', new_user_test_path, class: "btn btn-success"

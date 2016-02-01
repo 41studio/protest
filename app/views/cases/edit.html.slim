@@ -1,0 +1,7 @@
+h3 Editing case
+
+== render 'form'
+
+= link_to 'Show', project_test_case_path(params[:project_id], params[:test_id], @case)
+'|
+= link_to 'Back', project_test_path(params[:project_id], params[:test_id])

@@ -1,0 +1,19 @@
+development:
+  adapter: postgresql
+  endcoding: utf8
+  reconect: false
+  database: testerdoc
+  pool: 5
+  username: postgres
+  password: password
+  host: localhost
+
+production:
+  adapter: postgresql
+  endcoding: utf8
+  reconect: false
+  database: testerdoc
+  pool: 5
+  username: nurhadimaulana
+  password:
+  host: localhost

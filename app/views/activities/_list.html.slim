@@ -1,0 +1,17 @@
+- if activities.present?
+  - activities.each do |activity|
+    tr class="#{row_activity_status(activity)}"
+      td.text-center = "##{activity.id}"
+      td = truncate(strip_tags(activity.description), length: 60)
+      td = activity.status
+      td = activity.created_at.strftime("%d %b %Y %H:%M:%S")
+      td
+        = link_to "Show", project_test_case_activity_path(@case.test.project, @case.test, @case, activity), class: "btn btn-info"
+        | &nbsp;
+        = link_to "Edit", edit_project_test_case_activity_path(@case.test.project, @case.test, @case, activity), class: "btn btn-warning"
+        | &nbsp;
+        = link_to "Delete", project_test_case_activity_path(@case.test.project, @case.test, @case, activity), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger"
+- else
+  tr
+    td.text-center colspan="6"
+      | There is no activity list available at this moment
