@@ -70,6 +70,6 @@ class UserTestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_test_params
-      params.require(:user_test).permit(:email, :password)
+      params.require(:user_test).permit(:email, :password, :user_id)
     end
 end
