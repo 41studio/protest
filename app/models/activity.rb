@@ -24,7 +24,7 @@ class Activity < ActiveRecord::Base
   #
   # validations
   #
-  validates :description, :status, :user_test_id, presence: true
+  validates :description, :status, presence: true
 
   #
   # additional configuration from system
