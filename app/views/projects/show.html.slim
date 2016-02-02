@@ -16,8 +16,33 @@ hr
 
 .row
   .col-md-12.mar-bottom-15
+    h3 List User test
+    = link_to "Add New Test", new_project_user_test_path(@project), class: "btn btn-success"
+  .col-md-12
+    table.table.table-bordered.table-hover
+      tr
+        td No
+        td Email
+        td Password
+        td Description
+        td Actions
+      - @users_test.each_with_index do |user_test, index|
+        tr
+          td = index + 1
+          td = user_test.email
+          td = user_test.password 
+          td= user_test.description
+          td
+            = link_to "Show", project_user_test_path(@project, user_test), class: "btn btn-info"
+            | &nbsp;
+            = link_to "Edit", edit_project_user_test_path(@project, user_test), class: "btn btn-warning"
+            | &nbsp;
+            = link_to "Delete", project_user_test_path(@project, user_test), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger"    
+
+.row
+  .col-md-12.mar-bottom-15
     h3 List Tests
-    = link_to "Add New Test", new_project_test_path(@project), class: "btn btn-success"
+    = link_to "Add New Test", new_project_test_path(@project), class: "btn btn-success", data: {disable_with: 'Processsing'}
   .col-md-12
     table.table.table-bordered.table-hover
       tr
@@ -29,14 +54,3 @@ hr
   .col-md-12
     .pull-right
       = paginate @tests, :theme => 'twitter-bootstrap-3'
-
-.row
-  .col-md-12.mar-bottom-15
-    h3 List User test
-    = link_to "Add New Test", new_project_user_test_path(@project), class: "btn btn-success"
-  .col-md-12
-    table.table.table-bordered.table-hover
-      tr
-        td Email
-        td Password
-        td Actions

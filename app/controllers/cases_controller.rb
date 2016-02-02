@@ -79,6 +79,6 @@ class CasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def case_params
-      params.require(:case).permit(:scenario, :expected_result, :actual_result, :test_id, :user_id, :case_type)
+      params.require(:case).permit(:scenario, :expected_result, :title, :test_id, :user_test_id, :case_type)
     end
 end

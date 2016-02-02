@@ -18,7 +18,7 @@ class TestsController < ApplicationController
 
   # GET /tests/new
   def new
-    @test = Test.new
+    @test = @project.tests.build
   end
 
   # GET /tests/1/edit
@@ -29,6 +29,7 @@ class TestsController < ApplicationController
   # POST /tests.json
   def create
     @test = Test.new(test_params)
+    @test.project_id = params[:project_id]
 
     respond_to do |format|
       if @test.save

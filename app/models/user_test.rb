@@ -14,7 +14,7 @@ class UserTest < ActiveRecord::Base
   #
   # relations
   #
-  belongs_to :user
+  belongs_to :project
   has_many :activities, dependent: :destroy
 
   #

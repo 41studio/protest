@@ -1,6 +1,21 @@
 p#notice = notice
 
 p
+  strong Title: 
+  = @case.title
+p
+  strong Users:
+  br
+  | Email: 
+  = @case.user_test.email
+  br
+  | Password: 
+  = @case.user_test.password
+  br
+  | Description: 
+  = @case.user_test.description
+
+p
   strong Scenario:
   = @case.scenario.html_safe
 p

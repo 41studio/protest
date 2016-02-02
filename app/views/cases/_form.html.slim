@@ -1,7 +1,9 @@
-= simple_form_for @case, url: (@case.new_record? ? project_test_cases_path(params[:project_id], params[:test_id]) : project_test_case_path(params[:project_id], params[:test_id], @case)) do |f|
+= simple_form_for @case, url: (@case.new_record? ? project_test_cases_path(@project.id, params[:test_id]) : project_test_case_path(@project.id, params[:test_id], @case)) do |f|
   = f.error_notification
 
   .form-inputs
+    = f.input :title
+    = f.input :user_test_id, as: :select, collection: @project.user_tests.map{|user_test| [user_test.email, user_test.id]}, include_blank: false
     = f.input :case_type, as: :select, collection: ['Happy Case', 'Unhappy Case'], include_blank: false
     = f.input :scenario, as: :text, input_html: {class: "redactor"}
     = f.input :expected_result, as: :text, input_html: {class: "redactor"}

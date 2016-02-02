@@ -2,7 +2,7 @@ h3 Editing Test User
 
 == render 'form'
 
-= link_to 'Show', @user_test
+= link_to 'Show', project_user_test_path(@user_test.project, @user_test)
 '|
-= link_to 'Back', user_tests_path
+= link_to 'Back', project_path(@user_test.project)
 

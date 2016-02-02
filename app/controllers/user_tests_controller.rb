@@ -16,7 +16,8 @@ class UserTestsController < ApplicationController
 
   # GET /user_tests/new
   def new
-    @user_test = UserTest.new
+    @project = Project.friendly.find(params[:project_id])
+    @user_test = @project.user_tests.build
   end
 
   # GET /user_tests/1/edit
@@ -27,10 +28,11 @@ class UserTestsController < ApplicationController
   # POST /user_tests.json
   def create
     @user_test = UserTest.new(user_test_params)
+    @user_test.project_id = params[:project_id] if params[:project_id].present?
 
     respond_to do |format|
       if @user_test.save
-        format.html { redirect_to @user_test, notice: 'User test was successfully created.' }
+        format.html { redirect_to project_path(@user_test.project), notice: 'User test was successfully created.' }
         format.json { render :show, status: :created, location: @user_test }
       else
         format.html { render :new }
@@ -44,7 +46,7 @@ class UserTestsController < ApplicationController
   def update
     respond_to do |format|
       if @user_test.update(user_test_params)
-        format.html { redirect_to @user_test, notice: 'User test was successfully updated.' }
+        format.html { redirect_to project_path(@user_test.project), notice: 'User test was successfully updated.' }
         format.json { render :show, status: :ok, location: @user_test }
       else
         format.html { render :edit }
@@ -58,7 +60,7 @@ class UserTestsController < ApplicationController
   def destroy
     @user_test.destroy
     respond_to do |format|
-      format.html { redirect_to user_tests_url, notice: 'User test was successfully destroyed.' }
+      format.html { redirect_to project_path(@user_test.project), notice: 'User test was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -71,6 +73,6 @@ class UserTestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_test_params
-      params.require(:user_test).permit(:email, :password, :user_id)
+      params.require(:user_test).permit(:email, :password, :description)
     end
 end

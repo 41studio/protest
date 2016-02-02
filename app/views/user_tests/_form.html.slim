@@ -1,9 +1,10 @@
-= simple_form_for(@user_test) do |f|
+= simple_form_for @user_test, url: (@user_test.new_record? ? project_user_tests_path(@user_test.project_id) : project_user_test_path(@user_test.project_id, @user_test)) do |f|
   = f.error_notification
 
   .form-inputs
     = f.input :email
-    = f.input :password
+    = f.input :password, as: :string
+    = f.input :description
 
   .form-actions
     = f.button :submit
