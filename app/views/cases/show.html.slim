@@ -7,18 +7,14 @@ p
   strong Expected Result:
   = @case.expected_result.html_safe
 p
-  strong Actual Result:
-  = @case.actual_result.html_safe
-p
   strong Case Type:
   = @case.case_type
 p
   strong Status:
   = @case.latest_status
 
-- if @case.user.eql? current_user
-  = link_to 'Edit', edit_project_test_case_path(@case.test.project, @case.test, @case), class: "btn btn-default"
-  | &nbsp;
+= link_to 'Edit', edit_project_test_case_path(@case.test.project, @case.test, @case), class: "btn btn-default"
+| &nbsp;
 = link_to 'Back', project_test_path(@case.test.project, @case.test), class: "btn btn-default"
 
 hr

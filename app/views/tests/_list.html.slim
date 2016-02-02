@@ -9,11 +9,10 @@
         = test_detail(test, "New")
       td
         = link_to "Show", project_test_path(@project, test), class: "btn btn-info"
-        - if test.user.eql? current_user
-          | &nbsp;
-          = link_to "Edit", edit_project_test_path(@project, test), class: "btn btn-warning"
-          | &nbsp;
-          = link_to "Delete", project_test_path(@project, test), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger"
+        | &nbsp;
+        = link_to "Edit", edit_project_test_path(@project, test), class: "btn btn-warning"
+        | &nbsp;
+        = link_to "Delete", project_test_path(@project, test), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger"
 - else
   tr
     td.text-center colspan="4"

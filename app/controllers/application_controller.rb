@@ -11,15 +11,15 @@ class ApplicationController < ActionController::Base
       message = "You don't have permission to do that action!"
       case mod
       when "project"
-        redirect_to projects_url, alert: message unless @project.user.eql? current_user
+        # redirect_to projects_url, alert: message unless @project.user.eql? current_user
       when "test"
-        redirect_to project_path(@test.project), alert: message unless @test.user.eql? current_user
+        # redirect_to project_path(@test.project), alert: message unless @test.user.eql? current_user
       when "case"
-        redirect_to project_test_path(@case.test.project, @case.test), alert: message unless @case.user.eql? current_user
+        # redirect_to project_test_path(@case.test.project, @case.test), alert: message unless @case.user.eql? current_user
       when "activity"
-        redirect_to project_test_case_path(@activity.case.test.project, @activity.case.test, @activity.case), alert: message unless @activity.user.eql? current_user
+        # redirect_to project_test_case_path(@activity.case.test.project, @activity.case.test, @activity.case), alert: message unless @activity.user.eql? current_user
       when "user_test"
-        redirect_to user_tests_url, alert: message unless @user_test.user.eql? current_user
+        # redirect_to user_tests_url, alert: message unless @user_test.user.eql? current_user
       end
     end
   end

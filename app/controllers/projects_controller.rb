@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @tests = @project.tests.page(params[:page]).per(10)
+    @users_test = @project.user_tests
   end
 
   # GET /projects/new
@@ -28,6 +29,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
+    @project.user_id = current_user.id
 
     respond_to do |format|
       if @project.save

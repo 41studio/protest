@@ -29,6 +29,7 @@ class CasesController < ApplicationController
   # POST /cases.json
   def create
     @case = Case.new(case_params)
+    @case.test_id = params[:test_id] if params[:test_id].present?
 
     respond_to do |format|
       if @case.save
@@ -58,9 +59,10 @@ class CasesController < ApplicationController
   # DELETE /cases/1
   # DELETE /cases/1.json
   def destroy
+    test = @case.test
     @case.destroy
     respond_to do |format|
-      format.html { redirect_to project_test_path(@case.test.project, @case.test), notice: 'Case was successfully destroyed.' }
+      format.html { redirect_to project_test_path(test.project, test), notice: 'Case was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

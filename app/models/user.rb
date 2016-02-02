@@ -34,6 +34,9 @@ class User < ActiveRecord::Base
   #
   # relations
   #
+
+  # has_many
+
   with_options dependent: :destroy do |assoc|
     assoc.has_many :projects
     assoc.has_many :tests

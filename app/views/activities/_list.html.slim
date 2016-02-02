@@ -7,11 +7,10 @@
       td = activity.created_at.strftime("%d %b %Y %H:%M:%S")
       td
         = link_to "Show", project_test_case_activity_path(@case.test.project, @case.test, @case, activity), class: "btn btn-info"
-        - if activity.user.eql? current_user
-          | &nbsp;
-          = link_to "Edit", edit_project_test_case_activity_path(@case.test.project, @case.test, @case, activity), class: "btn btn-warning"
-          | &nbsp;
-          = link_to "Delete", project_test_case_activity_path(@case.test.project, @case.test, @case, activity), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger"
+        | &nbsp;
+        = link_to "Edit", edit_project_test_case_activity_path(@case.test.project, @case.test, @case, activity), class: "btn btn-warning"
+        | &nbsp;
+        = link_to "Delete", project_test_case_activity_path(@case.test.project, @case.test, @case, activity), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger"
 - else
   tr
     td.text-center colspan="6"

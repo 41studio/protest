@@ -28,10 +28,11 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = Activity.new(activity_params)
+    @activity.case_id = params[:case_id] if params[:case_id].present?
 
     respond_to do |format|
       if @activity.save
-        format.html { redirect_to project_test_case_activity_path(@activity.case.test.project, @activity.case.test, @activity.case, @activity), notice: 'Activity was successfully created.' }
+        format.html { redirect_to project_test_path(@activity.case.test.project, @activity.case.test), notice: 'Activity was successfully created.' }
         format.json { render :show, status: :created, location: @activity }
       else
         format.html { render :new }
@@ -76,6 +77,6 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:description, :status, :case_id, :user_id, :user_test_id, {attachments: []})
+      params.require(:activity).permit(:description, :status, :case_id, {attachments: []})
     end
 end

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :user_tests
   mount RedactorRails::Engine => '/redactor_rails'
   devise_for :users, :controllers => { registrations: 'users/registrations' }
 
   resources :projects do
+    resources :user_tests
     resources :tests do
       resources :cases do
         resources :activities

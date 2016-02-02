@@ -7,11 +7,10 @@
       td = truncate(strip_tags(c.latest_status), length: 60)
       td
         = link_to "Show", project_test_case_path(@test.project, c.test, c), class: "btn btn-info"
-        - if c.user.eql? current_user
-          | &nbsp;
-          = link_to "Edit", edit_project_test_case_path(@test.project, c.test, c), class: "btn btn-warning"
-          | &nbsp;
-          = link_to "Delete", project_test_path(@test.project, c.test, c), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger"
+        | &nbsp;
+        = link_to "Edit", edit_project_test_case_path(@test.project, c.test, c), class: "btn btn-warning"
+        | &nbsp;
+        = link_to "Delete", project_test_case_path(@test.project, c.test, c), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger"
 - else
   tr
     td.text-center colspan="6"

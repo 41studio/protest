@@ -5,7 +5,6 @@
 #  id         :integer          not null, primary key
 #  about      :string
 #  project_id :integer
-#  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -15,7 +14,6 @@ class Test < ActiveRecord::Base
   # relations
   #
   belongs_to :project
-  belongs_to :user
   has_many :cases, dependent: :destroy
 
   #

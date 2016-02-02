@@ -1,12 +1,6 @@
 p#notice = notice
 
 p
-  strong User Test:
-  br
-  = "email : #{@activity.user_test.email}"
-  br
-  = "password : #{@activity.user_test.password}"
-p
   strong Status:
   = @activity.status
 p
@@ -19,7 +13,6 @@ p
       = link_to attachment.url, target: "blank" do
         = image_tag attachment.url, width: 400
 
-- if @activity.user.eql? current_user
-  = link_to 'Edit', edit_project_test_case_activity_path(@activity.case.test.project, @activity.case.test, @activity.case, @activity), class: "btn btn-default"
-  | &nbsp;
+= link_to 'Edit', edit_project_test_case_activity_path(@activity.case.test.project, @activity.case.test, @activity.case, @activity), class: "btn btn-default"
+| &nbsp;
 = link_to 'Back', project_test_case_path(@activity.case.test.project, @activity.case.test, @activity.case), class: "btn btn-default"

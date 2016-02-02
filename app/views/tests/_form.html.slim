@@ -3,7 +3,6 @@
 
   .form-inputs
     = f.input :project_id, as: :hidden, input_html: {value: @project.id}
-    = f.input :user_id, as: :hidden, input_html: {value: current_user.id}
     = f.input :about
 
   .form-actions
