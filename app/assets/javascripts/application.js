@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require redactor-rails
+//= require nprogress
+//= require nprogress-turbolinks
 //= require_tree .
