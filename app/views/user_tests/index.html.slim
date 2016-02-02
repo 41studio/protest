@@ -16,11 +16,11 @@ table.table.table-bordered.table-hover
           td = user_test.email
           td = user_test.password
           td
-            = link_to 'Show', user_test
+            = link_to 'Show', user_test, class: "btn btn-info"
             | &nbsp;
-            = link_to 'Edit', edit_user_test_path(user_test)
+            = link_to 'Edit', edit_user_test_path(user_test), class: "btn btn-warning"
             | &nbsp;
-            = link_to 'Destroy', user_test, data: {:confirm => 'Are you sure?'}, :method => :delete
+            = link_to 'Destroy', user_test, data: {:confirm => 'Are you sure?'}, :method => :delete, class: "btn btn-danger"
     - else
       tr
         td.text-center colspan="4"

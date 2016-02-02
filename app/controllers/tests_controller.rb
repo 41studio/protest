@@ -2,6 +2,7 @@ class TestsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_test, only: [:show, :edit, :update, :destroy]
   before_action :set_project, only: [:new, :edit, :create, :update]
+  before_action :is_test_owner?, only: [:edit, :update, :destroy]
 
   # GET /tests
   # GET /tests.json

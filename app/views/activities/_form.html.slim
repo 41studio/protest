@@ -7,7 +7,7 @@
     = f.input :project_id, as: :hidden, input_html: {value: @project.id}
     = f.input :user_id, as: :hidden, input_html: {value: current_user.id}
     = f.input :status, as: :select, collection: ['New', 'Failed', 'Done'], include_blank: false, input_html: {disabled: (true unless @activity.new_record?)}
-    = f.input :user_test_id, as: :select, collection: current_user.user_tests.map{|user_test| [user_test.email, user_test.id]}, include_blank: false, input_html: {disabled: (true unless @activity.new_record?)}
+    = f.input :user_test_id, as: :select, collection: current_user.user_tests.map{|user_test| [user_test.email, user_test.id]}, include_blank: false
     = f.input :description, as: :text, input_html: {class: "redactor"}
     = f.input :attachments, as: :file, input_html: {multiple: true}
 

@@ -4,8 +4,9 @@ p
   strong About:
   = @test.about
 
-= link_to 'Edit', edit_project_test_path(@test.project, @test), class: "btn btn-default"
-| &nbsp;
+- if @test.user.eql? current_user
+  = link_to 'Edit', edit_project_test_path(@test.project, @test), class: "btn btn-default"
+  | &nbsp;
 = link_to 'Back', project_path(@test.project), class: "btn btn-default"
 
 hr

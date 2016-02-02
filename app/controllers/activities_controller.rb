@@ -2,6 +2,7 @@ class ActivitiesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
   before_action :set_project, only: [:new, :edit, :create, :update]
+  before_action :is_activity_owner?, only: [:edit, :update, :destroy]
 
   # GET /activities
   # GET /activities.json

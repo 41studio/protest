@@ -1,11 +1,12 @@
 class UserTestsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user_test, only: [:show, :edit, :update, :destroy]
+  before_action :is_user_test_owner?, only: [:edit, :update, :destroy]
 
   # GET /user_tests
   # GET /user_tests.json
   def index
-    @user_tests = UserTest.all
+    @user_tests = current_user.user_tests
   end
 
   # GET /user_tests/1

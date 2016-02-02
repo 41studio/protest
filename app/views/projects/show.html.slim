@@ -7,8 +7,9 @@ p
   strong Description:
   = @project.description.html_safe
 
-= link_to 'Edit', edit_project_path(@project), class: "btn btn-default"
-| &nbsp;
+- if @project.user.eql? current_user
+  = link_to 'Edit', edit_project_path(@project), class: "btn btn-default"
+  | &nbsp;
 = link_to 'Back', projects_path, class: "btn btn-default"
 
 hr

@@ -2,6 +2,7 @@ class CasesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_case, only: [:show, :edit, :update, :destroy]
   before_action :set_project, only: [:new, :edit, :create, :update]
+  before_action :is_case_owner?, only: [:edit, :update, :destroy]
 
   # GET /cases
   # GET /cases.json
