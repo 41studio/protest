@@ -29,6 +29,7 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     @activity.case_id = params[:case_id] if params[:case_id].present?
+    @activity.user_id = current_user.id
 
     respond_to do |format|
       if @activity.save

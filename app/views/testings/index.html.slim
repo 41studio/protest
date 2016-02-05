@@ -3,15 +3,31 @@ h3 Testing history
 table.table.table-bordered
   thead
     tr
-      th.text-center No
       th Project name
       th Case
-      th
+      th Status
+      th Testing time
+      th Action
+
 
   tbody
-    tr
-      td.text-center colspan="4"
-        | There is no project list available at this moment
+    - if @activities.present?
+      - @activities.each do |activity|
+        tr class="#{row_activity_status(activity)}"
+          td = activity.case.test.project.name
+          td = activity.case.title
+          td = activity.status
+          td = activity.created_at.strftime("%d %b %Y %H:%M:%S")
+          td
+            = link_to "Show", testing_path(activity), class: "btn btn-info"
+            | &nbsp;
+            = link_to "Edit", edit_testing_path(activity), class: "btn btn-warning"
+            | &nbsp;
+            = link_to "Delete", testing_path(activity), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger"
+    - else
+      tr
+        td.text-center colspan="4"
+          | There is no project list available at this moment
 
 .row
   .col-md-6

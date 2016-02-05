@@ -30,4 +30,12 @@ class Activity < ActiveRecord::Base
 
   attr_accessor :project_id, :test_id
 
+  def project
+    self.case.test.project
+  end
+
+  def test
+    self.case.test
+  end
+
 end

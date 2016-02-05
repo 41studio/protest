@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :testings do 
     collection do
       get 'find_test'
+      get 'find_case'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

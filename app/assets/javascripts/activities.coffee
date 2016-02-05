@@ -15,12 +15,21 @@ $ ->
       success: (data) ->
         $('.chosen-test-select').empty()
         $.map(data, (item) ->
-          $('.chosen-test-select').append '<li value="' + item.id + '">' + item.about + '</li>'
+          $('.chosen-test-select').append '<option value="' + item.id + '">' + item.about + '</option>'
         )
-        window.setInterval (->
-          $('.chosen-test-select').trigger 'chosen:updated'
-          return
-        ), 1000
+        $('.chosen-test-select').trigger 'chosen:updated'
         return
     return
     
+  $('.chosen-test-select').on 'change', ->
+    $.ajax
+      url: '/testings/find_case?test_id=' + $(this).val()
+      dataType: 'json'
+      success: (data) ->
+        $('.chosen-case-select').empty()
+        $.map(data, (item) ->
+          $('.chosen-case-select').append '<option value="' + item.id + '">' + item.title + '</option>'
+        )
+        $('.chosen-case-select').trigger 'chosen:updated'
+        return
+    return
