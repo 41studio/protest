@@ -1,0 +1,21 @@
+h3 Testing history
+
+table.table.table-bordered
+  thead
+    tr
+      th.text-center No
+      th Project name
+      th Case
+      th
+
+  tbody
+    tr
+      td.text-center colspan="4"
+        | There is no project list available at this moment
+
+.row
+  .col-md-6
+    = link_to 'New Testing', new_testing_path, class: "btn btn-success"
+  .col-md-6
+    .pull-right
+      = paginate @activities, :theme => 'twitter-bootstrap-3'

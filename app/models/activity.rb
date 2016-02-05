@@ -27,4 +27,7 @@ class Activity < ActiveRecord::Base
   # additional configuration from system
   #
   mount_uploaders :attachments, AttachmentUploader
+
+  attr_accessor :project_id, :test_id
+
 end

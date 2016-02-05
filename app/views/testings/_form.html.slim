@@ -1,0 +1,25 @@
+= simple_form_for @activity, url: (@activity.new_record? ? testings_path : testing_path(@activity)) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.label "Project name", {}, { class: "control-label"}
+    br
+    = f.select :project_id, @projects, { include_blank: true }, { class: 'chosen-project-select' }
+    br
+    = f.label "Test name", {}, { class: "control-label"}
+    br
+    = f.select :test_id, @tests, { include_blank: true }, { class: 'chosen-test-select' }
+    br
+    = f.label "Case name", {}, { class: "control-label"}
+    br
+    = f.select :case_id, @cases, { include_blank: true }, { class: 'chosen-case-select' }
+    br
+    = f.input :status, as: :select, collection: ['New', 'Failed', 'Done'], include_blank: false, input_html: {disabled: (true unless @activity.new_record?)}
+    = f.input :description, as: :text, input_html: {class: "redactor"}
+    = f.input :attachments, as: :file, input_html: {multiple: true}
+
+  .form-actions
+    = f.button :submit
+
+
+= javascript_include_tag "activities"

@@ -17,4 +17,4 @@
 //= require redactor-rails
 //= require nprogress
 //= require nprogress-turbolinks
-//= require_tree .
+//= require chosen-jquery

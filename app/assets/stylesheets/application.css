@@ -13,4 +13,5 @@
  *= require_self
  *= require styles
  *= require redactor-rails
+ *= require chosen
  */

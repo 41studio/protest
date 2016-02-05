@@ -32,6 +32,7 @@ html lang="en"
             ul.nav.navbar-nav
               - if user_signed_in?
                 li= link_to "Projects", projects_path
+                li= link_to "Testings", testings_path
             ul.nav.navbar-nav.pull-right
               - if user_signed_in?
                 li= link_to "Sign Out", destroy_user_session_path
