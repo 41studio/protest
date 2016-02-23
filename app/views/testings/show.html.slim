@@ -1,17 +1,83 @@
 p#notice = notice
 
-p
-  strong Status:
-  = @activity.status
-p
-  strong Description:
-  = @activity.description.html_safe
+- scenario = @activity.case
+- user_test = @activity.case.user_test
 
-p
-  - if @activity.attachments.present?
-    - @activity.attachments.each do |attachment|
-      = link_to attachment.url, target: "blank" do
-        = image_tag attachment.url, width: 400
+.row
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        | Testing story
+      .panel-body
+        p
+          strong Testing name:
+          br
+          = @activity.case.test.about
+        p
+          strong Test case:
+          br
+          = scenario.title
+        p
+          strong Case type:
+          br
+          = scenario.case_type
+        p
+          strong Scenario:
+          br
+          = scenario.scenario.html_safe
+        p
+          strong Expected result:
+          br
+          = scenario.expected_result.html_safe
+  .col-md-6
+    .panel.panel-primary
+      .panel-heading
+        | User test
+      .panel-body
+        p
+          strong Email:
+          br
+          = user_test.email
+        p
+          strong Password:
+          br
+          = user_test.password
+        p
+          strong Detail:
+          br
+          = user_test.description
+
+
+.row
+  .col-md-12
+    .panel.panel-info
+      .panel-heading
+        | Testing result
+      .panel-body
+        p
+          span class="label label-#{@activity.status.eql?('Failed') ? 'danger' : 'success' } "= @activity.status
+        p
+          strong Testing time:
+          br
+          = @activity.created_at.strftime("%d %b %Y %H:%M:%S")
+        p
+          strong Status:
+          br
+          = @activity.status
+        p
+          strong Description:
+          br
+          = @activity.description.html_safe
+
+        - if @activity.attachments.present?
+          p
+            strong Attachment:
+            br
+            - if @activity.attachments.present?
+              - @activity.attachments.each do |attachment|
+                .col-xs-6.col-md-3
+                  = link_to attachment.url, target: "blank", class: 'thumbnail' do
+                    = image_tag attachment.url, width: 400
 
 = link_to 'Edit', edit_testing_path(@activity), class: "btn btn-default"
 | &nbsp;

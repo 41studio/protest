@@ -36,8 +36,8 @@ class TestingsController < ApplicationController
     @activity.test_id = @activity.test.id
 
     @projects = current_user.projects.pluck(:name, :id)
-    @tests = Test.where(project_id: @activity.project_id)
-    @cases = Case.where(test_id: @activity.test_id)
+    @tests = Test.where(project_id: @activity.project_id).pluck(:about, :id)
+    @cases = Case.where(test_id: @activity.test_id).pluck(:title, :id)
   end
 
   def update

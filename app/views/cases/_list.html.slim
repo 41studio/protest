@@ -2,6 +2,7 @@
   - cases.each do |c|
     tr class="#{row_case_status(c)}"
       td.text-center = "##{c.id}"
+      td= c.title
       td = truncate(strip_tags(c.scenario), length: 60)
       td = truncate(strip_tags(c.case_type), length: 60)
       td = truncate(strip_tags(c.latest_status), length: 60)
