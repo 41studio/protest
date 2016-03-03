@@ -68,6 +68,19 @@ Rails.application.configure do
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
 
+  config.action_mailer.default_url_options = { host: 'teammate.id' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    enable_starttls_auto: true,
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "gmail.com",
+    authentication: :plain,
+    user_name: "test-do-not-reply@41studio.com",
+    password: ENV['MANDRILL_PASSWORD'],
+
+  }
+
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
