@@ -13,7 +13,7 @@ class Test < ActiveRecord::Base
   #
   # relations
   #
-  belongs_to :project
+  belongs_to :project, required: true
   has_many :cases, dependent: :destroy
 
   #

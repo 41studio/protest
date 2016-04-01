@@ -17,8 +17,8 @@ class Case < ActiveRecord::Base
   #
   # relations
   #
-  belongs_to :test
-  belongs_to :user_test
+  belongs_to :test, required: true
+  belongs_to :user_test, required: true
   has_many :activities, dependent: :destroy
 
   #

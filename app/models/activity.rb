@@ -15,8 +15,8 @@ class Activity < ActiveRecord::Base
   #
   # relations
   #
-  belongs_to :case
-  belongs_to :user
+  belongs_to :case, required: true
+  belongs_to :user, required: true
 
   #
   # validations
