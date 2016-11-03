@@ -15,7 +15,6 @@ class UserTest < ActiveRecord::Base
   # relations
   #
   belongs_to :project, required: true
-  has_many :activities, dependent: :destroy
 
   #
   # validations

@@ -47,6 +47,7 @@ group :development do
   gem 'spring'
 end
 
+gem 'dotenv-rails'
 gem 'annotate'
 gem 'quiet_assets'
 gem 'slim-rails'
@@ -59,10 +60,14 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'redactor-rails'
 gem 'carrierwave', github:'carrierwaveuploader/carrierwave'
+gem "fog-aws"
 gem 'mini_magick'
 gem 'puma'
 gem 'nprogress-rails'
 gem 'bootswatch-rails'
 gem 'bootstrap-sass-extras'
 gem 'chosen-rails'
-gem 'rails_12factor'
+
+group :production do
+  gem 'rails_12factor'
+end
