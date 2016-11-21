@@ -4,6 +4,9 @@ p
   strong Name:
   = @project.name
 p
+  strong Repository Name:
+  = @project.repo_name
+p
   strong Description:
   = @project.description.html_safe
 
@@ -30,14 +33,14 @@ hr
         tr
           td = index + 1
           td = user_test.email
-          td = user_test.password 
+          td = user_test.password
           td= user_test.description
           td
             = link_to "Show", project_user_test_path(@project, user_test), class: "btn btn-info"
             | &nbsp;
             = link_to "Edit", edit_project_user_test_path(@project, user_test), class: "btn btn-warning"
             | &nbsp;
-            = link_to "Delete", project_user_test_path(@project, user_test), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger"    
+            = link_to "Delete", project_user_test_path(@project, user_test), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger"
 
 .row
   .col-md-12.mar-bottom-15

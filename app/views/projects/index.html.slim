@@ -6,6 +6,7 @@ table.table.table-bordered
       th.text-center No
       th Name
       th Description
+      th Repository Name
       th
 
   tbody
@@ -15,6 +16,7 @@ table.table.table-bordered
           td.text-center = index + 1
           td = project.name
           td = truncate(strip_tags(project.description), length: 60)
+          td = project.repo_name
           td
             = link_to 'Show', project, class: "btn btn-info"
             //

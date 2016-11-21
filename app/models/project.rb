@@ -22,7 +22,7 @@ class Project < ActiveRecord::Base
   #
   # validations
   #
-  validates :name, presence: true
+  validates :name, :repo_name, presence: true
 
   #
   # additional configuration from gem

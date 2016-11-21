@@ -67,6 +67,7 @@ gem 'nprogress-rails'
 gem 'bootswatch-rails'
 gem 'bootstrap-sass-extras'
 gem 'chosen-rails'
+gem 'github_api'
 
 group :production do
   gem 'rails_12factor'

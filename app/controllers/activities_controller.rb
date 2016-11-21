@@ -33,6 +33,8 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
+        @activity.create_issue_on_github('b2f481718adaf80871851f8f5595ff2fe235f4ea') if @activity.status.eql?("Failed")
+
         format.html { redirect_to project_test_path(@activity.case.test.project, @activity.case.test), notice: 'Activity was successfully created.' }
         format.json { render :show, status: :created, location: @activity }
       else
