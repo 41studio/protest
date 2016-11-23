@@ -35,6 +35,9 @@ html lang="en"
                 li= link_to "Testings", testings_path
             ul.nav.navbar-nav.pull-right
               - if user_signed_in?
+                - if current_user.oauth_token.blank?
+                  li
+                    = link_to "Sync your account with github", sync_with_github_path
                 li= link_to "Sign Out", destroy_user_session_path
               - else
                 li= link_to "Sign Up", new_user_registration_path

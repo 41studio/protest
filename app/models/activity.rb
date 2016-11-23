@@ -41,7 +41,7 @@ class Activity < ActiveRecord::Base
   def create_issue_on_github(token)
     repo_name = self.project.repo_name || 'protest'
     issues = Github::Client::Issues.new(user: '41studio', repo: repo_name, oauth_token: token)
-    issues.create(title: self.case.title, body: self.description, milestone: 1, labels: ["bug"])
+    issues.create(title: self.case.title, body: self.description, labels: ["bug"])
   end
 
 end

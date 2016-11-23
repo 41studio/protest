@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   mount RedactorRails::Engine => '/redactor_rails'
   devise_for :users, :controllers => { registrations: 'users/registrations' }
 
+  devise_scope :user do
+    get 'callback', to: 'users/omniauth_callbacks#callback'
+    get 'sync_with_github', to: 'users/omniauth_callbacks#sync_with_github'
+  end
+
   resources :projects do
     resources :user_tests
     resources :tests do
@@ -11,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :testings do 
+  resources :testings do
     collection do
       get 'find_test'
       get 'find_case'
