@@ -3,7 +3,7 @@ class Users::OmniauthCallbacksController < DeviseController
   before_action :set_github
 
   def sync_with_github
-    authorize_url = @github.authorize_url redirect_uri: "http://staging.lvh.me:3000/callback"
+    authorize_url = @github.authorize_url redirect_uri: Rails.application.secrets.github_callback
     redirect_to authorize_url
   end
 
@@ -17,6 +17,6 @@ class Users::OmniauthCallbacksController < DeviseController
   private
 
   def set_github
-    @github = Github.new client_id: "328268bb75621cf3584c", client_secret: "ffead9ce50f469c74f56ef21e0115b0623e4e379"
+    @github = Github.new client_id: Rails.application.secrets.client_id, client_secret: Rails.application.secrets.client_secret
   end
 end
