@@ -33,7 +33,7 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
-        @activity.create_issue_on_github(current_user.oauth_token) if @activity.status.eql?("Failed") && current_user.oauth_token.present?
+        @activity.create_issue_on_github(current_user.oauth_token) if params[:activity][:submit_to_github].eql?("1") && @activity.status.eql?("Failed") && current_user.oauth_token.present?
 
         format.html { redirect_to project_test_path(@activity.case.test.project, @activity.case.test), notice: 'Activity was successfully created.' }
         format.json { render :show, status: :created, location: @activity }

@@ -28,7 +28,7 @@ class Activity < ActiveRecord::Base
   #
   mount_uploaders :attachments, AttachmentUploader
 
-  attr_accessor :project_id, :test_id
+  attr_accessor :project_id, :test_id, :submit_to_github
 
   def project
     self.case.test.project

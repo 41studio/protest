@@ -4,6 +4,7 @@
   .form-inputs
     = f.input :status, as: :select, collection: ['New', 'Failed', 'Done'], include_blank: false, input_html: {disabled: (true unless @activity.new_record?)}
     = f.input :description, as: :text, input_html: {class: "redactor"}
+    = f.input :submit_to_github, as: :boolean
     = f.input :attachments, as: :file, input_html: {multiple: true}
 
   .form-actions
